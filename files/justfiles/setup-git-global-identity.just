@@ -1,11 +1,20 @@
-# Set Git global identity
+# Setup global identity for Git
 [group('Apps')]
-set-git-global-identity:
-    #!/bin/bash
+setup-git-global-identity NAME="prompt" EMAIL="prompt":
+    #!/usr/bin/bash
     
-    set -euxo pipefail
+    NAME={{ NAME }}
+    EMAIL={{ EMAIL }}
 
-    read -p 'Git name: ' github_name
-    read -p 'Git email: ' github_email
-    git config --global user.name "$github_name"
-    git config --global user.email "$github_email"
+    if [ "$NAME" == "prompt" ]; then
+        echo -en "Please enter your name to use with Git: "
+        read NAME
+    fi
+
+    if [ "$EMAIL" == "prompt" ]; then
+        echo -en "Please enter your email to use with Git: "
+        read EMAIL
+    fi
+
+    git config --global user.name "$NAME"
+    git config --global user.email "$EMAIL"

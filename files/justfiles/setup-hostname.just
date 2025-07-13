@@ -1,11 +1,23 @@
-# Set system static and pretty hostname
+# Setup hostname for system
 [group('System')]
-set-hostname:
-    #!/bin/bash
+setup-hostname HOSTNAME="prompt" PRETTYNAME="prompt":
+    #!/usr/bin/bash
     
-    set -euxo pipefail
+    HOSTNAME={{ HOSTNAME }}
+    PRETTYNAME={{ PRETTYNAME }}
 
-    read -p 'Static hostname: ' static_hostname
-    read -p 'Pretty hostname: ' pretty_hostname
-    hostnamectl set-hostname $static_hostname --static
-    hostnamectl set-hostname $pretty_hostname --pretty
+    if [ "$HOSTNAME" == "prompt" ]; then
+        echo -en "Please enter the hostname to use: "
+        read HOSTNAME
+    fi
+
+    if [ "$PRETTYNAME" == "prompt" ]; then
+        echo -en "(Optional) Please enter the pretty hostname to use: "
+        read PRETTYNAME
+    fi
+
+    hostnamectl hostname $HOSTNAME
+
+    if [ "$PRETTYNAME" != "" ]; then
+        hostnamectl hostname "$PRETTYNAME" --pretty
+    fi
