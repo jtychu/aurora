@@ -5,7 +5,5 @@
 # builds actually ran successfully without any errors!
 set -oue pipefail
 
-echo "Removing ASUS repo"
-rm -rf /etc/yum.repos.d/_copr_lukenukem-asus-linux.repo
 echo "Removing Terra repos"
 rm -rf /etc/yum.repos.d/terra*

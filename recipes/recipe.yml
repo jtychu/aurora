@@ -37,11 +37,14 @@ modules:
     remove:
       - asusctl
       - asusctl-rog-gui
+      - input-remapper
       - kate
       - kate-libs
       - kate-plugins
       - kate-krunner-plugin
+      - kcm-fcitx5
       - kwrite
+      - sysprof
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
@@ -61,11 +64,7 @@ modules:
         - io.github.flattool.Warehouse
         - org.fedoraproject.MediaWriter
         - io.missioncenter.MissionCenter
-        - org.gnome.DejaDup
-        - com.borgbase.Vorta
         - io.github.input_leap.input-leap
-        - org.gtk.Gtk3theme.Breeze
-        - io.github.pwr_solaar.solaar
         - org.kde.skanpage
 
         # From https://github.com/ublue-os/aurora/blob/main/dx_flatpaks/flatpaks
@@ -76,7 +75,6 @@ modules:
         - com.discordapp.Discord
         - com.protonvpn.www
         - com.ultimaker.cura
-        - no.mifi.losslesscut
         - org.libreoffice.LibreOffice
         - org.videolan.VLC
     user: {} # Also add Flathub user repo, but no user packages
