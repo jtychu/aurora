@@ -39,10 +39,9 @@ modules:
       - asusctl-rog-gui
       - input-remapper
       - kate
+      - kate-krunner-plugin
       - kate-libs
       - kate-plugins
-      - kate-krunner-plugin
-      - kcm-fcitx5
       - kwrite
       - sysprof
 
@@ -85,6 +84,7 @@ modules:
 
   - type: justfiles
     include:
+      - install-youtube-music.just
       - setup-git-global-identity.just
       - setup-hostname.just
 
