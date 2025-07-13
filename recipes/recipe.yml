@@ -82,5 +82,10 @@ modules:
     install:
       - 1password
 
+  - type: justfiles
+    include:
+      - setup-git-global-identity.just
+      - setup-hostname.just
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
