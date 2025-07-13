@@ -17,6 +17,10 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  - type: script
+    scripts:
+      - remove-repos.sh
+
   - type: rpm-ostree
     repos:
       # Default
@@ -30,6 +34,16 @@ modules:
       
       - bcompare
       - firefox
+    remove:
+      - asusctl
+      - asusctl-rog-gui
+      - input-remapper
+      - kate
+      - kate-krunner-plugin
+      - kate-libs
+      - kate-plugins
+      - kwrite
+      - sysprof
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
@@ -44,23 +58,16 @@ modules:
         - org.kde.kweather
         - org.kde.kclock
         - org.fkoehler.KTailctl
-        - org.kde.haruna
         - com.github.tchx84.Flatseal
         - com.ranfdev.DistroShelf
         - io.github.flattool.Warehouse
         - org.fedoraproject.MediaWriter
         - io.missioncenter.MissionCenter
-        - org.gnome.DejaDup
-        - com.borgbase.Vorta
         - io.github.input_leap.input-leap
-        - org.gtk.Gtk3theme.Breeze
-        - io.github.pwr_solaar.solaar
-        - org.gustavoperedo.FontDownloader
         - org.kde.skanpage
 
         # From https://github.com/ublue-os/aurora/blob/main/dx_flatpaks/flatpaks
         - io.podman_desktop.PodmanDesktop
-        - io.github.getnf.embellish
         - me.iepure.devtoolbox
         - sh.loft.devpod
 
