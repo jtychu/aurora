@@ -1,6 +1,6 @@
-# Install Youtube Music | https://github.com/th-ch/youtube-music
+# Install YouTube Music desktop app flatpak | https://github.com/th-ch/youtube-music
 [group('Apps')]
-install-youtube-music:
+install-youtube-music-flatpak:
     #!/usr/bin/bash
 
     OWNER="th-ch"
@@ -8,7 +8,13 @@ install-youtube-music:
     PATTERN="*x86_64.flatpak"
     DOWNLOAD_DIR="$HOME/Downloads"
 
-    echo "Downloading latest Flatpak version for Youtube Music"
+    echo "Downloading latest YouTube Music flatpak using GitHub CLI…"
+
+    if ! command -v gh >/dev/null 2>&1; then
+        echo "GitHub CLI not installed. Please install from https://cli.github.com/ or download YouTube Music manually from https://github.com/$OWNER/$REPO"
+        exit
+    fi
+
     gh release download \
         --repo "$OWNER/$REPO" \
         --pattern "$PATTERN" \
@@ -21,11 +27,15 @@ install-youtube-music:
         read CONFIRM
 
         if [ "$CONFIRM" == "" ] || [ "${CONFIRM,,}" == "y" ]; then
-            echo "Installing Youtube Music"
+            echo "Installing YouTube Music"
             flatpak install --or-update $FLATPAK
+
+            if [ $? -eq 0 ]; then
+                rm -f $FLATPAK
+            fi
         else
             echo "Installation cancelled"
         fi
     else
-        echo "File not found. Please try again later or download manually from https://github.com/$OWNER/$REPO"
+        echo "File not found. Please try again or download manually from https://github.com/$OWNER/$REPO"
     fi

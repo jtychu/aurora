@@ -84,7 +84,7 @@ modules:
 
   - type: justfiles
     include:
-      - install-youtube-music.just
+      - install-youtube-music-flatpak.just
       - setup-git-global-identity.just
       - setup-hostname.just
 
