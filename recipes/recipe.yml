@@ -46,8 +46,8 @@ modules:
       - sysprof
 
   - type: default-flatpaks
-    notify: true # Send notification after install/uninstall is finished (true/false)
-    system:
+    configurations:
+    - notify: true # Send notification after install/uninstall is finished (true/false)
       # If no repo information is specified, Flathub will be used by default
       install:
         # From https://github.com/ublue-os/aurora/blob/main/aurora_flatpaks/flatpaks
@@ -76,7 +76,6 @@ modules:
         - com.ultimaker.cura
         - org.libreoffice.LibreOffice
         - org.videolan.VLC
-    user: {} # Also add Flathub user repo, but no user packages
 
   - type: bling
     install:
