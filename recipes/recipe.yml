@@ -82,6 +82,9 @@ modules:
     install:
       - 1password
 
+  - type: brew
+    brew-analytics: false
+
   - type: justfiles
     include:
       - install-youtube-music-flatpak.just
