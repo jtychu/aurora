@@ -73,6 +73,7 @@ modules:
         - sh.loft.devpod
 
         - com.discordapp.Discord
+        - com.jetpackduba.Gitnuro
         - com.protonvpn.www
         - com.ultimaker.cura
         - org.libreoffice.LibreOffice
