@@ -3,10 +3,10 @@
 # image will be published to ghcr.io/<user>/<name>
 name: aurora
 # description will be included in the image's metadata
-description: Personalized image of Aurora DX (HWE).
+description: Personalized image of Aurora DX.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/aurora-dx-hwe
+base-image: ghcr.io/ublue-os/aurora-dx
 image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -34,8 +34,6 @@ modules:
       
       - bcompare
     remove:
-      - asusctl
-      - asusctl-rog-gui
       - input-remapper
       - kate
       - kate-krunner-plugin
@@ -51,21 +49,22 @@ modules:
       # If no repo information is specified, Flathub will be used by default
       install:
         # From https://github.com/ublue-os/aurora/blob/main/flatpaks/system-flatpaks.list
-        - org.mozilla.firefox
-        - org.kde.kcalc
-        - org.kde.gwenview
-        - org.kde.kontact
-        - org.kde.okular
-        - org.kde.kweather
-        - org.kde.kclock
-        - org.fkoehler.KTailctl
         - com.github.tchx84.Flatseal
         - com.ranfdev.DistroShelf
         - io.github.flattool.Warehouse
-        - org.fedoraproject.MediaWriter
+        - io.github.kolunmi.Bazaar
         - io.missioncenter.MissionCenter
-        - io.github.input_leap.input-leap
+        - org.deskflow.deskflow
+        - org.fedoraproject.MediaWriter
+        - org.fkoehler.KTailctl
+        - org.kde.gwenview
+        - org.kde.kcalc
+        - org.kde.kclock
+        - org.kde.kontact
+        - org.kde.kweather
+        - org.kde.okular
         - org.kde.skanpage
+        - org.mozilla.firefox
 
         # From https://github.com/ublue-os/aurora/blob/main/flatpaks/system-flatpaks-dx.list
         - io.podman_desktop.PodmanDesktop
